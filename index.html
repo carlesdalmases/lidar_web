@@ -10,6 +10,7 @@
 
 	    <title>SITXELL</title>
                     
+		<!-- BOOTSTRAP -->
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<!-- Optional theme -->
@@ -20,6 +21,7 @@
 		<link href="css/login_modal.css" rel="stylesheet">
 -->
 
+		<!-- JQUERY -->
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -32,7 +34,7 @@
 		<!-- Waits modals -->
 		<script type='text/javascript' src="./src/wait.js"></script>
 
-		<!-- Array and object utils -->
+		<!-- UNDERSCORE  Array and object utils -->
 		<script type='text/javascript' src="http://underscorejs.org/underscore-min.js"></script>
 		
 		<!-- async.js https://github.com/caolan/async/tree/master/dist -->
@@ -40,16 +42,20 @@
 		
 		<!-- Leaflet -->
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+
 		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 		<script src="http://rawgithub.com/kartena/Proj4Leaflet/master/lib/proj4-compressed.js" type="text/javascript"></script>
 		<script src="https://rawgithub.com/kartena/Proj4Leaflet/master/src/proj4leaflet.js" type="text/javascript"></script>		
 		
+		<script type='text/javascript' src="./src/query_server.js"></script>
+		
+		<link rel="stylesheet" href="css/map.css" />
 		<script type='text/javascript' src="./src/main_.js"></script>
 		
 	</head>
   
 	<body role="document">
-		<div class="container">
+		<div class="container-fluid">
 			<div id="map" class="map"></div>
 		</div>
 
