@@ -71,19 +71,25 @@ function main_()
 	L.control.layers(baseMaps).addTo(map);
 
 	//Consulta al SOLR
-	var URL_query = 'http://dalmases.ddns.net:8983/solr/lidar/select?q=*:*&wt=json&json.wrf=?&fl=xy,z,class&sort=random_1234%20desc&rows=50000';
+	var URL_query = 'http://dalmases.ddns.net:8983/solr/lidar/select?q=*:*&wt=json&json.wrf=?&fl=xy,z,class&sort=random_1234%20desc&rows=1000';
 	
+	console.time("Query_SOLR");
 	query_server(URL_query).then
 	(
 			function(df)
 			{
+				console.timeEnd("Query_SOLR");
 				//CANVAS
 				/* http://bl.ocks.org/sumbera/11114288 */
+				
+				console.time("Canvas_Layer");
 				var puntsLIDAR = L.canvasOverlay()
 						.params({data: df})
 			            .drawing(drawingOnCanvas)
 			            .addTo(map);
 			    
+				console.timeEnd("Canvas_Layer");
+				
 				//Afegeixo la capa a la llegenda
 				//TODO
 			}
@@ -103,6 +109,7 @@ function main_()
 	    //Defineixo la projecció ETRS89-UTM31N segons el ICC
 	    proj4.defs('EPSG:25831','+proj=utm +zone=31 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs');
 		
+		console.time("Generacio_CANVAS");
 		$.each(params.options.data.response.docs, function(index, value)
 		{
 			wkt.read(value.xy);
@@ -118,7 +125,9 @@ function main_()
 			//Omplo de color
 			ctx.fill();
 			ctx.closePath();			
-		});		
+		});
+		console.timeEnd("Generacio_CANVAS");
+				
 	}; //Fi de drawingOnCanvas()
 
 } // Fi de main_()
